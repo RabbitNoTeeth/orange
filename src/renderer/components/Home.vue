@@ -1,16 +1,30 @@
 <template>
     <div>
-        我是主页
+        <el-container>
+            <el-header>
+                <Header></Header>
+            </el-header>
+            <el-main>
+                <Task v-for="item in tasks" :task="item"></Task>
+            </el-main>
+        </el-container>
     </div>
 </template>
 
 <script>
-    import { readConfig } from './../util/ConfigFileUtils'
+    import Task from "./Task";
+    import Header from "./Header";
+
     export default {
         name: "Home",
-        mounted () {
-            // 页面准备完成后，加载本地配置文件
-            readConfig();
+        components: {Header, Task},
+        data() {
+            return {}
+        },
+        computed: {
+            tasks() {
+                return this.$store.state.Task.main
+            }
         }
     }
 </script>

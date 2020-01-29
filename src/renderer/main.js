@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
-Vue.prototype.$bus = bus;
+Vue.prototype.$bus = bus.bus;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(Storage, {

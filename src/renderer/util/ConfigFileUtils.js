@@ -12,12 +12,15 @@ const mkdirp = require('mkdirp');
  */
 export function readConfig() {
     mkdirp.sync(path.dirname(configFilePath));
-    let data = fs.readFileSync(configFilePath, {flag: 'a+', encoding: 'utf8'});
-    if (!data && data === '') {
-        data = {
+    let result;
+    let dataStr = fs.readFileSync(configFilePath, {flag: 'a+', encoding: 'utf8'});
+    if (!dataStr && dataStr === '') {
+        result = {
             tasks: []
         };
-        fs.writeFile(configFilePath, JSON.stringify(data), {flag: 'a'}, e => {});
+        fs.writeFile(configFilePath, JSON.stringify(result), {flag: 'a'}, e => {});
+    } else {
+        result = JSON.parse(dataStr)
     }
-    return data;
+    return result.tasks;
 }

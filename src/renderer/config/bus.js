@@ -1,6 +1,11 @@
 import Vue from 'vue';
 
-// 使用 Event Bus
 const bus = new Vue();
+const events = {
+    CONFIG_CHANGE: 'config_change'
+};
 
-export default bus;
+export default {
+    bus,
+    events
+};
