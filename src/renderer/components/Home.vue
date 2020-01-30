@@ -19,11 +19,28 @@
         name: "Home",
         components: {Header, Task},
         data() {
-            return {}
+            return {
+                tasks: []
+            }
         },
-        computed: {
-            tasks() {
-                return this.$store.state.Task.main
+        created() {
+            this.$bus.$on(this.$event.RELOAD_TASK, () => this.loadTasks())
+        },
+        destroyed() {
+            this.$bus.$off(this.$event.RELOAD_TASK)
+        },
+        mounted() {
+            this.loadTasks()
+        },
+        methods: {
+            loadTasks() {
+                this.$db.find({}, (err, docs) => {
+                    if (err) {
+                        this.$message.error('任务列表加载失败: ' + err)
+                    } else {
+                        this.tasks = docs
+                    }
+                })
             }
         }
     }

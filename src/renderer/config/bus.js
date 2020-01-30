@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 const bus = new Vue();
 const events = {
-    CONFIG_CHANGE: 'config_change'
+    RELOAD_TASK: 'reload_task'
 };
 
 export default {

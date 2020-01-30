@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import Storage from 'vue-ls'
+import db from './config/datastore'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
@@ -10,13 +10,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 Vue.prototype.$bus = bus.bus;
+Vue.prototype.$event = bus.events;
+Vue.prototype.$db = db;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-Vue.use(Storage, {
-    namespace: 'orange_',
-    name: 'ls',
-    storage: 'local'
-});
 
 new Vue({
   components: { App },
