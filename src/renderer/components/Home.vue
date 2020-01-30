@@ -34,7 +34,7 @@
         },
         methods: {
             loadTasks() {
-                this.$db.find({}, (err, docs) => {
+                this.$db.find({}).sort({ createTime: -1 }).exec((err, docs) => {
                     if (err) {
                         this.$message.error('任务列表加载失败: ' + err)
                     } else {

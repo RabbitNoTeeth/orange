@@ -9,8 +9,16 @@
                 </div>
             </div>
             <div class="text item">
+                <span>创建时间：</span>
+                <span>{{task.createTime}}</span>
+            </div>
+            <div class="text item">
+                <span>修改时间：</span>
+                <span>{{task.updateTime}}</span>
+            </div>
+            <div class="text item">
                 <span>执行周期：</span>
-                <span>{{task.interval}} 秒</span>
+                <span>{{task.interval}} 秒/次</span>
             </div>
             <div class="text item">
                 <span>协议类型：</span>
@@ -21,16 +29,24 @@
                 <span>{{task.ftpUrl}}</span>
             </div>
             <div class="text item">
+                <span>同步文件总数：</span>
+                <span>{{task.totalSyncCount}}</span>
+            </div>
+            <div class="text item">
                 <span>上次执行时间：</span>
                 <span>{{task.lastSyncTime}}</span>
+            </div>
+            <div class="text item">
+                <span>上次执行耗时：</span>
+                <span>{{task.lastSyncCost}}</span>
             </div>
             <div class="text item">
                 <span>上次同步文件数：</span>
                 <span>{{task.lastSyncCount}}</span>
             </div>
             <div class="text item">
-                <span>同步文件总数：</span>
-                <span>{{task.totalSyncCount}}</span>
+                <span>下次执行时间：</span>
+                <span>{{task.nextSyncTime}}</span>
             </div>
         </el-card>
         <task-form ref="taskFormRef"></task-form>

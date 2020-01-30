@@ -23,6 +23,7 @@
   "dependencies": {
     "@serialport/parser-inter-byte-timeout": "^1.1.0",
     "axios": "^0.18.0",
+    "dayjs": "^1.8.19",
     "element-ui": "^2.6.1",
     "fs": "0.0.1-security",
     "nedb": "^1.8.0",

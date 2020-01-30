@@ -86,11 +86,18 @@
                 const app = this;
                 app.$refs['formRef'].validate((valid) => {
                     if (valid) {
+                        const now = Date.now();
+                        const nowTime = app.$dayjs(now).format('YYYY-MM-DD HH:mm:ss');
+                        const nextSyncTime = app.$dayjs(now).add(app.formData.interval, 'second').format('YYYY-MM-DD HH:mm:ss');
                         if (app.mode === 'add') {
                             app.$db.insert({
                                 ...app.formData,
+                                createTime: nowTime,
+                                updateTime: nowTime,
                                 lastSyncTime: null,
+                                nextSyncTime: nextSyncTime,
                                 lastSyncCount: null,
+                                lastSyncCost: null,
                                 totalSyncCount: 0
                             }, (e, data) => {
                                 if (e) {
@@ -103,6 +110,7 @@
                             })
                         } else {
                             app.$db.update({ _id: app.formData._id }, { $set: {
+                                    updateTime: nowTime,
                                     name: app.formData.name,
                                     interval: app.formData.interval,
                                     protocol: app.formData.protocol,
