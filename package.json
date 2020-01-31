@@ -23,9 +23,11 @@
   "dependencies": {
     "@serialport/parser-inter-byte-timeout": "^1.1.0",
     "axios": "^0.18.0",
+    "cron": "^1.8.2",
     "dayjs": "^1.8.19",
     "element-ui": "^2.6.1",
     "fs": "0.0.1-security",
+    "ftp": "^0.3.10",
     "nedb": "^1.8.0",
     "serialport": "^7.1.5",
     "vue": "^2.5.16",

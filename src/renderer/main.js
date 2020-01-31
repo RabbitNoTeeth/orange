@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import db from './config/datastore'
+import CronTaskPool from './config/cron'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
@@ -13,6 +14,7 @@ Vue.prototype.$bus = bus.bus;
 Vue.prototype.$event = bus.events;
 Vue.prototype.$db = db;
 Vue.prototype.$dayjs = dayjs;
+Vue.prototype.$cronTaskPool = CronTaskPool;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
