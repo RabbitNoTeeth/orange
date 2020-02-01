@@ -48,7 +48,8 @@
             </div>
             <div class="text item">
                 <span>同步文件总数：</span>
-                <span>{{task.totalSyncCount}}</span>
+                <span>{{task.totalSyncCount}}</span>&nbsp;&nbsp;&nbsp;
+                <el-button type="text" size="mini" @click="handleTotalSyncInfoBtnClick">查看</el-button>
             </div>
             <div class="text item">
                 <span>上次执行时间：</span>
@@ -60,7 +61,8 @@
             </div>
             <div class="text item">
                 <span>上次同步文件数：</span>
-                <span>{{task.lastSyncCount}}</span>
+                <span>{{task.lastSyncCount}}</span>&nbsp;&nbsp;&nbsp;
+                <el-button type="text" size="mini" @click="handleLastSyncInfoBtnClick">查看</el-button>
             </div>
             <div class="text item">
                 <span>下次执行时间：</span>
@@ -68,14 +70,18 @@
             </div>
         </el-card>
         <task-form ref="taskFormRef"></task-form>
+        <file-sync-history ref="fileSyncHistoryRef"></file-sync-history>
+        <file-sync-total ref="fileSyncTotalRef"></file-sync-total>
     </div>
 </template>
 
 <script>
     import TaskForm from "./TaskForm";
+    import FileSyncHistory from "./FileSyncHistory";
+    import FileSyncTotal from "./FileSyncTotal";
     export default {
         name: "Task",
-        components: {TaskForm},
+        components: {FileSyncTotal, FileSyncHistory, TaskForm},
         props: {
             task: {
                 type: Object,
@@ -85,6 +91,12 @@
             }
         },
         methods: {
+            handleTotalSyncInfoBtnClick() {
+                this.$refs.fileSyncTotalRef.show(this.task);
+            },
+            handleLastSyncInfoBtnClick() {
+                this.$refs.fileSyncHistoryRef.show(this.task);
+            },
             handleFireBtnClick() {
                 this.$confirm('手动执行该任务, 是否继续?', '提示', {
                     confirmButtonText: '确定',

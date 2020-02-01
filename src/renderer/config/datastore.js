@@ -12,7 +12,13 @@ const file = new Datastore({
     filename: path.join(remote.app.getPath('userData'), '/orange_data_file.db')
 });
 
+const history = new Datastore({
+    autoload: true,
+    filename: path.join(remote.app.getPath('userData'), '/orange_data_history.db')
+});
+
 export default {
     task,
-    file
+    file,
+    history
 }

@@ -8,16 +8,19 @@
                 <Task v-for="item in tasks" :task="item"></Task>
             </el-main>
         </el-container>
+
+        <file-sync-rate></file-sync-rate>
     </div>
 </template>
 
 <script>
     import Task from "./Task";
     import Header from "./Header";
+    import FileSyncRate from "./FileSyncRate";
 
     export default {
         name: "Home",
-        components: {Header, Task},
+        components: {FileSyncRate, Header, Task},
         data() {
             return {
                 tasks: []

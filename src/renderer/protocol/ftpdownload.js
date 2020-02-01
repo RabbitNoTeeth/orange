@@ -3,7 +3,7 @@ import fs from 'fs';
 
 export default {
 
-    sync(task, files) {
+    sync(task, files, callback) {
         const syncFileCount = 0;
         const insertFiles = [];
         const updateFiles = [];
